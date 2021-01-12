@@ -229,9 +229,8 @@ def learn(env,
             logger.record_tabular("episodes", num_episodes)
             logger.record_tabular("mean 100 episode reward", mean_100ep_reward)
             logger.record_tabular("% time spent exploring", int(100 * exploration.value(t)))
-            logger.record_tabular("Saving model in path=", load_path)
+            logger.record_tabular("Saving model in path", load_path)
             manager.save()
-            logger.record_tabular("Saving DONE")
             logger.dump_tabular()
     
     
