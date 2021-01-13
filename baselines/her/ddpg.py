@@ -1,7 +1,9 @@
 from collections import OrderedDict
 
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
+#from tf.contrib.staging import StagingArea
 
 from baselines import logger
 from baselines.her.util import (
@@ -86,6 +88,7 @@ class DDPG(object):
 
         # Create network.
         with tf.variable_scope(self.scope):
+        #with tf.compat.v1.variable_scope(self.scope):
             self.staging_tf = StagingArea(
                 dtypes=[tf.float32 for _ in self.stage_shapes.keys()],
                 shapes=list(self.stage_shapes.values()))
